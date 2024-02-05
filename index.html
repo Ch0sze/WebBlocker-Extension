@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebBlocker</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <container class="container">
+        <div class="container text-center">
+            <div class="row">
+              <div class="col">
+                <p class="fs-5">Blocked pages:</p>
+              </div>
+              <div class="col">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#popup" class="btn btn-outline-success">Add</button>
+              </div>
+            </div>
+
+            <div id="popup" class="modal fade" tabindex="-1">
+                <div class="modal-dialog modal-fullscreen-sm-down">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add page you want to block</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <input type="text" id="urlInput" class="form-control" placeholder="Url" aria-label="Url" aria-describedby="basic-addon1">
+                                <input type="time" id="timeInput" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="saveUrl" class="btn btn-success" data-bs-dismiss="modal">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="addWeb"></div>
+        </div>
+    </container>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
