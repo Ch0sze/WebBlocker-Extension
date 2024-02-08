@@ -4,16 +4,26 @@
         "version": "1.0.0",
         "description": "Extension to block websites in selected time period",
         "permissions": [
-            "scripting",
-            "webRequest",
-            "webRequestBlocking",
-            "storage",
-            "activeTab"
-          ],
+            "activeTab",
+            "declarativeNetRequestWithHostAccess",
+            "declarativeNetRequestFeedback",
+            "declarativeNetRequest"
+        ],
         "background": {
-            "scripts": ["background.js"],
-            "persistent": false
-        },
+            "service_worker": "js/service_worker.js"
+          },
+        "declarative_net_request": {
+            "rule_resources": [
+              {
+                "id": "ruleset_1",
+                "enabled": true,
+                "path": "js/rules_1.json"
+              }
+            ]
+          },
+        "host_permissions": [
+            "https://developer.chrome.com/*"
+        ],
         "content_scripts": [
             {
                 "matches": ["<all_urls>"],
