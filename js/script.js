@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     displayData();
     addWeb();
+
+// Check if the current page matches the blocked page
+    if (window.location.href.includes("facebook.com")) {
+    window.location.href = "redirectPage.html";
+  }
+  
 });
 var id = 0;
 var max = 0;
@@ -72,12 +78,25 @@ function displayData() {
                 <input type="text" aria-label="Url" class="form-control" value="${item.url}" readonly>
                 <span class="input-group-text">Time:</span>
                 <input type="text" aria-label="Time" class="form-control" value="${item.time}" readonly>
-                <button class="btn btn-outline-secondary" onClick="deleteData(${item.id})" type="button">X</button>
+                <button class="btn btn-outline-secondary delete-button" data-id="${item.id}" type="button">X</button>
             </div>
         </div>`;
         document.getElementById('addWeb').innerHTML += newDiv;
     });
+
+    // Add event listeners to the delete buttons
+    var deleteButtons = document.querySelectorAll('.delete-button');
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            // Get the id of the item to delete
+            var itemId = parseInt(event.target.getAttribute('data-id'));
+
+            // Call the deleteData function with the id
+            deleteData(itemId);
+        });
+    });
 }
+
 
 function deleteData(numOfId) {
     max--;
@@ -106,20 +125,4 @@ function deleteData(numOfId) {
     }
 }
 
-// function deleteData(index) {
-//     // Get the existing data from local storage
-//     var existingData = JSON.parse(localStorage.getItem('BlockedUrl')) || [];
-//     console.log(index);
-//     // Remove the item at the specified index
-//     existingData.splice(index, 1);
 
-//     // Store the updated data in local storage
-//     localStorage.setItem('BlockedUrl', JSON.stringify(existingData));
-
-//     // Remove the corresponding div from the DOM
-//     var divId = `localStorageShowUp-${index}`;
-//     var element = document.getElementById(divId);
-//     if (element) {
-//         element.remove();
-//     }
-// }
