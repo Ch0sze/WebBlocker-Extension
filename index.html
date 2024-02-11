@@ -9,17 +9,22 @@
 </head>
 <body>
     <container class="container">
-        <div class="container text-center">
+        <div class="container">
             <div class="row">
               <div class="col">
                 <p class="fs-5">Blocked pages:</p>
               </div>
-              <div class="col">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#popup" class="btn btn-outline-success">Add</button>
+              <div class="col text-end">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#popup1" class="btn btn-outline-success">Add</button>
+
+                <svg id="i-settings" data-bs-toggle="modal" data-bs-target="#popup2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M13 2 L13 6 11 7 8 4 4 8 7 11 6 13 2 13 2 19 6 19 7 21 4 24 8 28 11 25 13 26 13 30 19 30 19 26 21 25 24 28 28 24 25 21 26 19 30 19 30 13 26 13 25 11 28 8 24 4 21 7 19 6 19 2 Z" />
+                    <circle cx="16" cy="16" r="4" />
+                </svg>
               </div>
             </div>
 
-            <div id="popup" class="modal fade" tabindex="-1">
+            <div id="popup1" class="modal fade" tabindex="-1">
                 <div class="modal-dialog modal-fullscreen-sm-down">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -29,11 +34,33 @@
                         <div class="modal-body">
                             <div class="input-group mb-3">
                                 <input type="text" id="urlInput" class="form-control" placeholder="Url" aria-label="Url" aria-describedby="basic-addon1">
-                                <input type="time" id="timeInput" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" id="saveUrl" class="btn btn-success" data-bs-dismiss="modal">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="modal fade" tabindex="-1">
+                <div class="modal-dialog modal-fullscreen-sm-down">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Settings</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <p class="p-2 modal-title">Time to block the pages:</p>
+                                <input type="time" id="timeBlock" class="form-control form-control-sm" value="20:00">
+                            </div>
+                            <div class="input-group mb-3">
+                                <p class="p-2 modal-title">Time to Unblock the pages:</p>
+                                <input type="time" id="timeUnblock" class="form-control form-control-sm" value="08:00">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="saveTime" class="btn btn-success" data-bs-dismiss="modal">Save</button>
                         </div>
                     </div>
                 </div>
